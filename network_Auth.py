@@ -15,7 +15,7 @@ def Logout(userid ,wlanuserip ,wlanacIp ,mac):
     logger.info(f"{userid}:宽带账号登出,Code:" + req.json().get("code"))
 
 def fuckServer(userid ,pw ,wlanuserip ,wlanacIp ,mac ,vlanId):
-    url = "http://172.32.253.17/quickauth.do?userid="+ userid +"&passwd="+ pw +"&wlanuserip=" + wlanuserip + "&wlanacname=VBRAS-ZHKJ1&wlanacIp=" + wlanacIp + "&ssid=&vlan=" + vlanId + "&mac=" + mac + "&version=0&portalpageid=1&timestamp=1758962288328&uuid=fcc448c9-f7a4-431c-a5c7-b4db8bca8027&portaltype=0&hostname=OpenWrt&bindCtrlId=&validateType=0&bindOperatorType=2&sendFttrNotice=0"
+    url = "http://172.32.253.17/quickauth.do?userid="+ userid +"&passwd="+ pw +"&wlanuserip=" + wlanuserip + "&wlanacname=VBRAS-ZHKJ1&wlanacIp=" + wlanacIp + "&ssid=&vlan=" + str(vlanId) + "&mac=" + mac + "&version=0&portalpageid=1&timestamp=1758962288328&uuid=fcc448c9-f7a4-431c-a5c7-b4db8bca8027&portaltype=0&hostname=OpenWrt&bindCtrlId=&validateType=0&bindOperatorType=2&sendFttrNotice=0"
     response = requests.get(url)
     jsonResponse = response.json()
     if jsonResponse.get("message") == "认证成功":
