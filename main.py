@@ -9,7 +9,7 @@ from telegram_bot import send_TG, start_bot
 from network_Auth import network_Auth
 from loguru import logger
 
-from utils import read_userid
+from utils import read_userid, load_cache, save_cache
 
 def interface_pool():
     logger.info("开始检查...")
@@ -19,6 +19,7 @@ def interface_pool():
     logger.success(f"检查完成, {sleep_time}秒后重新检查")
     sleep(sleep_time)
     
+    save_cache(interfaceList, utils.useridList)
     interface_pool()
 
 def interface_check(interface_name):
@@ -37,5 +38,9 @@ if __name__ == '__main__':
     start_bot()
     send_TG("已启动喵awa😋")
     read_userid()
+    cache = load_cache()
+    if cache != {} :
+        utils.useridList = list(cache.values())
+        used_userid = list(cache.values())
     interface_pool()
 
