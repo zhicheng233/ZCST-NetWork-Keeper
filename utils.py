@@ -28,7 +28,7 @@ def get_new_userid():
         
 def save_cache(interface_name_list, userid_list):
     try:
-        with open("cache.txt", "a") as f:
+        with open("cache.txt", "w") as f:
             for i in range(len(interface_name_list)):
                 f.write(f"{interface_name_list[i]}:{userid_list[i]}\n")
         logger.success("缓存已保存到cache.txt")
