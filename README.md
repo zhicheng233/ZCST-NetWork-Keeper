@@ -7,7 +7,7 @@
 - 2.确保你的RouterOS版本在7.19以上，并且已经配置好vlan多播接口
 - 3.在`config.py`中配置好RouterOS登录参数以及RouterOS上的vlan多播接口名称，以及**VLANID**
 - 4.在RouterOS中开启API服务并在防火墙中放行相应的端口
-- 5.在`userid.txt`中填入你爆破出的宽带账号，一行一个
+- 5.在`userid.txt`中填入你拥有的宽带账号，一行一个
 - 6.安装依赖
     ```bash
     pip install -r requirements.txt
