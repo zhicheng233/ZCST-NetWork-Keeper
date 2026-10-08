@@ -107,12 +107,12 @@ def fuckServer(userid, pw, wlanuserip, wlanacIp, mac, vlanId):
     except requests.RequestException as e:
         logger.error(f"{userid}:宽带账号登录请求失败: {e}")
         return False
-    if jsonResponse.get("message") == "认证成功":
+    if jsonResponse.get("message") == "Success":
         logger.success(f"{userid}:宽带账号登录成功!")
 
         return True
-    elif jsonResponse.get("message") == "PPPOE 认证失败,内网认证成功":
-        logger.error(f"{userid}:宽带账号登录成功,但PPPOE认证失败!")
+    elif jsonResponse.get("message") in "内网认证成功，外网认证失败":
+        logger.error(f"{userid}:宽带账号登录成功,但{jsonResponse.get('message')}")
         Logout(userid, wlanuserip, wlanacIp, mac)
     else:
         logger.error(f"{userid}:宽带账号登录失败!\n{jsonResponse.get('message')}")
@@ -134,9 +134,9 @@ def pass_Auth(api, intreface_name, interface_Mac):
         new_userid, auth_pw, wlanuserip, config.route_ip, interface_Mac, vlanID
     ):
         # 更新已经使用的账号
-        send_TG(
-            f"✅接口{intreface_name} 宽带账号登录成功~\n账号:{new_userid}\nIP:{wlanuserip}"
-        )
+        # send_TG(
+        #     f"✅接口{intreface_name} 宽带账号登录成功~\n账号:{new_userid}\nIP:{wlanuserip}"
+        # )
         used_userid[Index] = new_userid
         bad_userid.clear()
         return True
