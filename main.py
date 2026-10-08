@@ -55,7 +55,7 @@ def interface_check(interface_name):
     if not interface_stauts:
         interface_mac = routerOS_api.get_interface_mac(api, interface_name)
         logger.warning(f"⚠️接口:{interface_name} 下线! Mac:{interface_mac}")
-        send_TG(f"⚠️接口:{interface_name} 下线! Mac:{interface_mac}")
+        #send_TG(f"⚠️接口:{interface_name} 下线! Mac:{interface_mac}")
         network_Auth(api, interface_name, interface_mac)
 
 

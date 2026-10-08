@@ -29,7 +29,7 @@ def get_new_userid():
         return None
 
     available = [
-        uid for uid in useridList if uid not in used_userid and uid not in bad_userid
+        uid for uid in useridList if uid not in used_userid
     ]
     if not available:
         return None
